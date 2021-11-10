@@ -1,0 +1,252 @@
+﻿@model IEnumerable<Employee>
+@{
+    //Layout = "~/Views/shared/_Layout.cshtml";
+    ViewBag.Title = " Employee List";
+}
+
+<head>
+    <title>Footer 10</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css1/ionicons.min.css">
+    <link rel="stylesheet" href="~/css1/style.css">
+</head>
+
+
+
+
+    @*<div class="container">*@
+
+
+
+        <nav class="navbar navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" asp-action="index" asp-controller="home">
+                <img src="~/images/download.png" height="30" width="30" />
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collaps" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a asp-action="DefaultPage" asp-controller="home" class="nav-link">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-action="index" asp-controller="home" class="nav-link">List</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-action="create" asp-controller="home" class="nav-link">Create</a>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Manage
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" asp-controller="Administration"
+                               asp-action="ListUsers">Users</a>
+                            <a class="dropdown-item" asp-controller="Administration"
+                               asp-action="ListRoles">Roles</a>
+                            <a class="dropdown-item" asp-controller="Account"
+                               asp-action="ChangePassword">
+                                Change Password
+                            </a>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a asp-action="register" asp-controller="account" class="nav-link">Register</a>
+                        <form method="post" asp-action="logout" asp-controller="account">
+                            <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">
+
+                                Logout @User.Identity.Name
+
+                            </button>
+
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <div class="card-deck">
+            @foreach (var employee in Model)
+            {
+                var photopath = "~/Images/" + (employee.PhotoPath ?? "smile.jpg");
+                <div class="card m-3" style="min-width: 18rem; max-width:30.5%; ">
+                    <div class="card-header">
+                        <h3> @employee.Name</h3>
+                    </div>
+                    <img class="card-img-top imageThumbnail" src="@photopath" asp-append-version="true" />
+                    <div class="card-footer text-center">
+
+                        <a asp-controller="home" asp-action="details" asp-route-id="@employee.EncryptedId" class="btn btn-primary m-1">View</a>
+                        <a asp-action="edit" asp-controller="Home" asp-route-id="@employee.id" class="btn btn-primary m-1">Edit</a>
+                        <a href="#" class="btn btn-danger m-1">Delete</a>
+
+                    </div>
+                </div>
+
+            }
+        </div>
+    
+<br />
+<br />
+<br />
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h2>Footer #10</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-10">
+        <div class="container">
+            <div class="row mb-5 pb-3 no-gutters">
+                <div class="col-md-4 mb-md-0 mb-4 d-flex">
+                    <div class="con con-1 w-100 py-5">
+                        <div class="con-info w-100 text-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="ion-ios-call"></span>
+                            </div>
+                            <div class="text">
+                                <span>(+00) 1234 5678</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-md-0 mb-4 d-flex">
+                    <div class="con con-2 w-100 py-5">
+                        <div class="con-info w-100 text-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="ion-ios-mail"></span>
+                            </div>
+                            <div class="text">
+                                <span>info@email.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-md-0 mb-4 d-flex">
+                    <div class="con con-3 w-100 py-5">
+                        <div class="con-info w-100 text-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="ion-ios-pin"></span>
+                            </div>
+                            <div class="text">
+                                <span>203 Fake St. Mountain View, San Francisco, California, USA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-4 mb-md-0 mb-4">
+                            <h2 class="footer-heading">About</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="d-block">Out story</a></li>
+                                <li><a href="#" class="d-block">Awards</a></li>
+                                <li><a href="#" class="d-block">Our Team</a></li>
+                                <li><a href="#" class="d-block">Career</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-md-0 mb-4">
+                            <h2 class="footer-heading">Company</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="d-block">Our services</a></li>
+                                <li><a href="#" class="d-block">Clients</a></li>
+                                <li><a href="#" class="d-block">Contact</a></li>
+                                <li><a href="#" class="d-block">Press</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-md-0 mb-4">
+                            <h2 class="footer-heading">Resources</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="d-block">Blog</a></li>
+                                <li><a href="#" class="d-block">Newsletter</a></li>
+                                <li><a href="#" class="d-block">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 mb-md-0 mb-4">
+                    <h2 class="footer-heading">Subscribe</h2>
+                    <form action="#" class="subscribe-form">
+                        <div class="form-group d-flex">
+                            <input type="text" class="form-control rounded-left" placeholder="Enter email address">
+                            <button type="submit" class="form-control submit rounded-right">Subscribe</button>
+                        </div>
+                        <span class="subheading">Get digital marketing updates in your mailbox</span>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-5 pt-4 border-top">
+                <div class="col-md-6 col-lg-8 mb-md-0 mb-4">
+                    <p class="copyright mb-0">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved. | This Website made <i class="ion-ios-heart" aria-hidden="true"></i> by <a href="https://github.com/arkhan4537" target="_blank">AR Khan</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+                <div class="col-md-6 col-lg-4 text-md-right">
+                    <ul class="ftco-footer-social p-0">
+                        <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="ion-logo-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="ion-logo-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="ion-logo-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js1/jquery.min.js"></script>
+    <script src="~/js1/popper.js"></script>
+    <script src="~/js1/bootstrap.min.js"></script>
+    <script src="~/js1/main.js"></script>
+</body>
+
+    <!--
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody>
+              //  foreach (var Employee in Model)
+               // {
+                    <tr>
+                        <td>//Employee.id </td>
+                        <td>//Employee.Name</td>
+                        <td>//Employee.Department</td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+     -->
